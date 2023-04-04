@@ -11,12 +11,12 @@ class Recipe
     private string $date;
     private string $imagelink;
 
-    public function __construct(           // Added constructor to create recipe objects
-        string $name, string $description, string $date, string $imagelink, int $id = -1 // id is on the end so that it is optional
+    public function __construct(
+        string $name, string $description, string $date, string $imagelink, int $id = -1
     )
-    {                                                             // so that when add a recipe to database it allows
-        $this->id = $id;                                          // the db to automatically assign primary key.
-        $this->name = $name;                                      // Db will never assign at -1
+    {
+        $this->id = $id;
+        $this->name = $name;
         $this->description = $description;
         $this->date = $date;
         $this->imagelink = $imagelink;

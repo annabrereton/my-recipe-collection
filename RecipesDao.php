@@ -1,6 +1,5 @@
 <?php
-// Dao standing for DATA ACCESS OBJECT
-// This accesses data from the recipes database to use to connect to Recipes.php
+
 require_once 'collection-db-connect.php';
 require_once 'Recipes.php';
 
@@ -11,7 +10,7 @@ class RecipeDao
     public function __construct()
     {
         $this->db = connectToDb('mycollection'); // 'INJECTED' name of database into the function
-    }                                      // Index9 tests this
+    }
 
     public function fetchAll(): array      // FETCHING data from db
     {
@@ -22,13 +21,13 @@ class RecipeDao
         $query->execute();
         $rows = $query->fetchAll();
 
-        $recipes = [];                         // Made a recipe constructor to create recipe objects to
-        foreach ($rows as $row) {           // return array of recipes rather than an array of arrays
+        $recipes = [];
+        foreach ($rows as $row) {
             $recipe = new Recipe ($row['name'], $row['description'], $row['date'], $row['imagelink'], $row['id']);
             $recipes[] = $recipe;
         }
 
-        return $recipes;                        // Returns recipe objects
+        return $recipes;  // Returns recipe objects
     }
 
     public function fetch(int $recipeId): Recipe
@@ -37,7 +36,7 @@ class RecipeDao
             . 'FROM `collection_recipes` '
             . 'WHERE `id` = :id; ';
 
-        $values = [':id' => $recipeId]; // Array
+        $values = [':id' => $recipeId];
 
         $query = $this->db->prepare($sql);
         $query->execute($values);
@@ -48,7 +47,7 @@ class RecipeDao
 
     public function add(Recipe $recipe):int
     {
-        $sql = 'INSERT INTO `collection_recipes` (`name`, `description`, `date`, `imagelink`) '  // Does not contain 'id' so the db auto increment
+        $sql = 'INSERT INTO `collection_recipes` (`name`, `description`, `date`, `imagelink`) '  // Does not contain 'id' so the db auto increments
             . 'VALUES (:name, :description, :date, :imagelink); ';
 
         $values = array(
@@ -61,6 +60,6 @@ class RecipeDao
         $query = $this->db->prepare($sql);
         $query->execute($values);
 
-        return $this->db->lastInsertId(); // lastInsertId is a part of PDO
+        return $this->db->lastInsertId();
     }
 }

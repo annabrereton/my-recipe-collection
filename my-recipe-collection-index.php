@@ -1,24 +1,10 @@
 <?php
 
 require_once 'RecipesDao.php';
-//require_once 'Recipes.php';
 
-$recipeDao = new RecipeDao(); // Testing class, connecting to db. Could print-r here
-//echo '<pre>';
-//print_r($recipeDao);
-//echo '</pre>';
+$recipeDao = new RecipeDao();
 
 $recipes = $recipeDao->fetchAll();
-//echo '<pre>';
-//print_r($recipes);
-//echo '</pre>';
-//
-//echo '<pre>';
-//echo $recipes[2]->getName();
-//echo '</pre>';
-//echo '<pre>';
-//print_r($recipes);
-//echo '</pre>';
 
 ?>
 
@@ -50,35 +36,34 @@ $recipes = $recipeDao->fetchAll();
 
 <body>
 
-<header>
-    <h1>Random Recipes</h1>
-
-    <p>Hi friends! Welcome to my page of not so random recipes, they're all savoury pastries!</p>
-</header>
-
-<section class="collection">
-<?php
-$html = '';
-foreach ($recipes as $recipe) {
-    $html .= '<article class="recipe-card">'
-        . '<h3 class="recipe-name" >Name: ' . $recipe->getName() . '</h3>'
-        . '<img class="imagelink" src=' . $recipe->getImagelink() . ' alt="' . $recipe->getName() . '"></img>'
-        . '<p class="recipe-description">Description: ' . $recipe->getDescription() . '</p>'
-        . '<p class="recipe-date">Date: ' . $recipe->getDate() . '</p>'
-        . '</article>';
-}
-echo $html;
-?>
-</section>
-
     <nav>
         <a class="home" href="index.html">
-                    <i class="fa-solid fa-house"></i>
+            <i class="fa-solid fa-house"></i>
         </a>
         <form action="#" class="addbutton">
             <button type="submit">Add an item</button>
         </form>
     </nav>
+
+    <header>
+        <h1>Savoury Pastry Creations!</h1>
+        <p>Hi friends! Welcome to my page displaying my savoury pastry recipes!</p>
+    </header>
+
+    <section class="collection">
+        <?php
+        $html = '';
+        foreach ($recipes as $recipe) {
+            $html .= '<article class="recipe-card">'
+                . '<h2 class="recipe-name" >' . $recipe->getName() . '</h2>'
+                . '<img class="imagelink" src=' . $recipe->getImagelink() . ' alt="' . $recipe->getName() . '">'
+                . '<p class="recipe-description">Description: ' . $recipe->getDescription() . '</p>'
+                . '<p class="recipe-date">Date: ' . $recipe->getDate() . '</p>'
+                . '</article>';
+        }
+        echo $html;
+        ?>
+    </section>
 
 </body>
 </html>

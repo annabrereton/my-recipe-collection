@@ -29,3 +29,19 @@ echo '</pre>';
 //echo '<pre>';
 //print_r($newRecipe);
 //echo '</pre>';
+
+$recipes = $recipeDao->fetchAll();
+//echo '<pre>';
+//print_r($recipes);
+//echo '</pre>';
+//
+//echo '<pre>';
+//echo $recipes[2]->getName();
+//echo '</pre>';
+//echo '<pre>';
+//print_r($recipes);
+//echo '</pre>';
+$recipeDao = new RecipeDao(); // Testing class, connecting to db. Could print-r here
+//echo '<pre>';
+//print_r($recipeDao);
+//echo '</pre>';
