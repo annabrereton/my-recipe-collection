@@ -1,22 +1,12 @@
 <?php
 
 require_once 'RecipesDao.php';
-function assignRecipes(): string
-    {
-    $recipeDao = new RecipeDao();
-    $recipes = $recipeDao->fetchAll();
-    $html = '';
-    foreach ($recipes as $recipe) {
-            $html .= '<article class="recipe-card">'
-            . '<h2 class="recipe-name" >' . $recipe->getName() . '</h2>'
-            . '<img class="imagelink" src=' . $recipe->getImagelink() . ' alt="' . $recipe->getName() . '">'
-            . '<p class="recipe-description">Description: ' . $recipe->getDescription() . '</p>'
-            . '<p class="recipe-date">Date: ' . $recipe->getDate() . '</p>'
-            . '</article>';
-        }
-    return $html;
-    }
-    $html = assignRecipes();
+
+require_once 'functions.php';
+
+$recipeDao = new RecipeDao();
+
+$recipes = $recipeDao->fetchAll();
 
 ?>
 
@@ -49,7 +39,7 @@ function assignRecipes(): string
 <body>
 
     <nav>
-        <a class="home" href="index.html">
+        <a class="home" href="index.php">
             <i class="fa-solid fa-house"></i>
         </a>
         <form action="#" class="addbutton">
@@ -64,6 +54,7 @@ function assignRecipes(): string
 
     <section class="collection">
         <?php
+        $html = assignRecipes($recipes);
         echo $html;
         ?>
     </section>

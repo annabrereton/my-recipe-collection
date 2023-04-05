@@ -2,8 +2,6 @@
 
 class Recipe
 {
-    const OWNER = 'Anna Brereton';
-
     // Properties - same as from db
     private int $id;
     private string $name;
