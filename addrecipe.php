@@ -1,15 +1,3 @@
-<?php
-
-require_once 'RecipesDao.php';
-
-require_once 'functions.php';
-
-$recipeDao = new RecipeDao();
-
-$recipes = $recipeDao->fetchAll();
-
-?>
-
 <!DOCTYPE html>
 <html lang="en-gb">
 <head>
@@ -42,9 +30,6 @@ $recipes = $recipeDao->fetchAll();
         <a class="home" href="index.php">
             <i class="fa-solid fa-house"></i>
         </a>
-        <a class="addlink" href="http://localhost:1234/my-recipe-collection/addrecipe.php">
-            Add an item
-        </a>
     </nav>
 
     <header>
@@ -52,12 +37,16 @@ $recipes = $recipeDao->fetchAll();
         <p>Hi friends! Welcome to my page displaying my savoury pastry recipes!</p>
     </header>
 
-    <section class="collection">
-        <?php
-        $html = assignRecipes($recipes);
-        echo $html;
-        ?>
-    </section>
-
-</body>
-</html>
+    <div class="formdisplay">
+        <form class="newrecipedeets" action="processform.php" method="post">
+            <label for="recipe-name">Recipe Name:</label><br>
+            <input class="input" type="text" id="recipe-name" name="recipe-name"><br>
+            <label for="recipe-description">Description:</label><br>
+            <input class="input" type="text" id="recipe-description" name="recipe-description"><br>
+            <label for="recipe-date">Date Created:</label><br>
+            <input class="input" type="date" id="recipe-date" name="recipe-date"><br>
+            <label for="imagelink">Image Link:</label><br>
+            <input class="input" type="text" id="imagelink" name="imagelink"><br>
+            <input class="submit" type="submit" value="Submit">
+        </form>
+    </div>

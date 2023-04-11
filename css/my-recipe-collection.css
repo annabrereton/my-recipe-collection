@@ -30,13 +30,9 @@ nav {
     list-style-type: none;
 }
 
-.addbutton {
+.addlink {
     width: 30%;
     margin-right: 1.5rem;
-}
-
-button {
-    width: 100%;
     padding: 0.3rem;
     background-color: #FFFFFF;
     color: #2E7160;
@@ -116,6 +112,39 @@ p {
     text-align: left;
 }
 
+/*Add recipe page*/
+.formdisplay {
+    margin: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.newrecipedeets {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+.input
+{
+    padding: 0.3rem;
+    background-color: #FFFFFF;
+    color: #2E7160;
+    font-size: 1rem;
+    border: 0.1rem solid #53B8A0;
+    border-radius: 0.3rem;
+}
+.submit
+{
+    padding: 0.3rem;
+    background-color: #FFFFFF;
+    color: #2E7160;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 0.1rem solid #53B8A0;
+    border-radius: 0.3rem;
+}
+
 /*Media queries for responsiveness*/
 @media only screen and (min-width: 1000px) {
     nav {
@@ -142,13 +171,12 @@ p {
         padding: 0.5rem;
         font-size: 2.5rem;
     }
-    .addbutton {
+    .addlink {
         width: 16rem;
-        padding-right: 3rem;
-    }
-    button {
         padding: 0.5rem;
         font-size: 1.8rem;
+        text-align: center;
+        text-decoration: none;
     }
     h1 {
        font-size: 4.5rem;

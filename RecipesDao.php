@@ -43,4 +43,21 @@ class RecipeDao
 
         return new Recipe($recipe['name'], $recipe['description'], $recipe['date'], $recipe['imagelink'], $recipe['id']);
     }
+    public function add(Recipe $recipe)
+    {
+        $sql = 'INSERT INTO `collection_recipes` (`name`, `description`, `date`, `imagelink`) '  // Does not contain 'id' so the db auto increments
+            . 'VALUES (:name, :description, :date, :imagelink); ';
+
+        $values = array(
+            'name' => $recipe->getName(),
+            'description' => $recipe->getDescription(),
+            'date' => $recipe->getDate(),
+            'imagelink' => $recipe->getImagelink(),
+        );
+
+        $query = $this->db->prepare($sql);
+        $query->execute($values);
+
+//        return $this->db->lastInsertId();
+    }
 }
