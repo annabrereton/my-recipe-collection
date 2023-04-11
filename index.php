@@ -6,12 +6,6 @@ require_once 'functions.php';
 
 $recipeDao = new RecipeDao();
 
-if (isset($_POST['recipe-name'])){
-    $new_recipe = new Recipe($_POST['recipe-name'], $_POST['recipe-description'], $_POST['recipe-date']
-    , $_POST['imagelink']);
-    $recipeDao->add($new_recipe);
-}
-
 $recipes = $recipeDao->fetchAll();
 
 ?>

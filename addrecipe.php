@@ -38,7 +38,7 @@
     </header>
 
     <div class="formdisplay">
-        <form class="newrecipedeets" action="index.php" method="post">
+        <form class="newrecipedeets" action="processform.php" method="post">
             <label for="recipe-name">Recipe Name:</label><br>
             <input class="input" type="text" id="recipe-name" name="recipe-name"><br>
             <label for="recipe-description">Description:</label><br>
